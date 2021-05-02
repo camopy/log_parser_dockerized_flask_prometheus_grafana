@@ -70,7 +70,7 @@ var (
 )
 
 type Info struct {
-	NumLogs int `json:"num_logs"`
+	NumLogs int `json:"NumLogs"`
 }
 
 type Exporter struct {

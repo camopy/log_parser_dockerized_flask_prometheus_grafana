@@ -22,4 +22,4 @@ def index():
 
 @app.route("/api/rsync/logs_count")
 def rsync_logs_count():
-    return "12"
+    return {"NumLogs": 12}
