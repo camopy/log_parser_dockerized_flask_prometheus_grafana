@@ -30,6 +30,18 @@ services:
     ports:
       - 9141:9141
 
+  grafana:
+    image: grafana/grafana:latest
+    # volumes:
+    #   - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+    - ./grafana/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+    ports:
+      - 3000:3000
+    depends_on:
+      - prometheus
+    # links:
+    #   - prometheus
+
   flask-api:
     build: ./flask-api/
     volumes:
