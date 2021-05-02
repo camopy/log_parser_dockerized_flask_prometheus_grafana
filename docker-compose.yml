@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  # prometheus:
+  #   build: ./prometheus
+  # command:
+  # - "--config.file=/config/prometheus.yml"
+  # volumes:
+  #   - ./prometheus/etc/prometheus:/etc/prometheus
+  #   - ./prometheus/data/prometheus:/prometheus
+  #   - ./prometheus/config:/config
+  # ports:
+  #   - 9090:9090
+
+  # could not make this work, somehow it doesnt creates query logger file
+  prometheus:
+    image: prom/prometheus:latest
+    command:
+      - "--config.file=/config/prometheus.yml"
+    volumes:
+      - ./prometheus/etc/prometheus:/etc/prometheus
+      - ./prometheus/data/prometheus:/prometheus
+      - ./prometheus/config:/config
+    ports:
+      - 9090:9090
+
+  prometheus-log-exporter:
+    build: ./prometheus-log-exporter
+    volumes:
+      - ./prometheus-log-exporter/:/usr/src/prometheus-log-exporter
+    command: go run main.go
+    ports:
+      - 9141:9141
+
+  flask-api:
+    build: ./flask-api/
+    volumes:
+      - ./flask-api/:/usr/src/app/
+    ports:
+      - 5000:5000
+    # environment:
+    #   PORT: 5000
+    #   FLASK_DEBUG: 1
+  # depends_on:
+  #   - database
+
+  # database:
+  #   container_name: mysql
+  #   image: mysql:latest
+  #   env_file: database.conf
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: devpasswordlogparser
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     - db_volume:/var/lib/mysql
+# volumes:
+#   db_volume:
