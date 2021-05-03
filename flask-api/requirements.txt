@@ -1,4 +1,0 @@
-flask
-flask-sqlalchemy==2.5.1
-mysqlclient
-MySQL-python==1.2.4
