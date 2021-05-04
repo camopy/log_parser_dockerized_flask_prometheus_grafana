@@ -1,0 +1,40 @@
+{% extends "template.html" %} {% block content %}
+<div>
+  <h1 class="font-bold">README</h1>
+  <br />
+  <p>This is a basic log parser!</p>
+  <br />
+  <p>Did this while learning the stack:</p>
+  <ul>
+    <li>- Python</li>
+    <li>- Flask</li>
+    <li>- MySQL</li>
+    <li>- SQL Alchemy</li>
+    <li>- Prometheus exporter</li>
+    <li>- Golang</li>
+    <li>- Prometheus</li>
+    <li>- Grafana</li>
+    <li>- Docker</li>
+    <li>- Docker Compose</li>
+  </ul>
+  <br />
+  <p>
+    For now, it only parses files from a local (from project files) rsync log
+    file.
+  </p>
+  <p>
+    The parser was made using Python, with Flask framework, and saved to a MySQL
+    database using SQL Alchemy.
+  </p>
+  <p>
+    I created a Prometheus exporter in Golang to communicate with the flask api
+    and get metrics for Prometheus that will be later displayed in a Grafana
+    dashboard.
+  </p>
+  <p>
+    Everything is in docker containers, all connected with a docker compose
+    file. So you can get everything running with a single docker-compose up in
+    the terminal.
+  </p>
+</div>
+{% endblock %}

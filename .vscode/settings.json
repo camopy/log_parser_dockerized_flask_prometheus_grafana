@@ -1,6 +1,8 @@
 {
   "cSpell.words": [
+    "Grafana",
     "datasources",
-    "mysqlconnector"
+    "mysqlconnector",
+    "rsync"
   ]
 }
