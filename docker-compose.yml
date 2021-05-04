@@ -2,25 +2,14 @@ version: "3"
 
 services:
   prometheus:
-    build: ./prometheus
+    image: prom/prometheus:latest
     command:
       - "--config.file=/config/prometheus.yml"
     volumes:
+      - prometheus-data:/prometheus
       - ./prometheus/config:/config
     ports:
       - 9090:9090
-
-  # could not make this work properly
-  # prometheus:
-  #   image: prom/prometheus:latest
-  #   command:
-  #     - "--config.file=/config/prometheus.yml"
-  #   volumes:
-  #     - ./prometheus/etc/prometheus:/etc/prometheus
-  #     - ./prometheus/data/prometheus:/prometheus
-  #     - ./prometheus/config:/config
-  #   ports:
-  #     - 9090:9090
 
   prometheus-log-exporter:
     build: ./prometheus-log-exporter
@@ -70,3 +59,4 @@ services:
 volumes:
   db_volume:
   grafana-storage:
+  prometheus-data:
