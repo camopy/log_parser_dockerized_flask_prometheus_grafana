@@ -22,4 +22,5 @@ def index():
 
 @app.route("/api/rsync/logs_count")
 def rsync_logs_count():
-    return {"NumLogs": 12}
+    count = db.session.query(File).count()
+    return {"NumLogs": count}
