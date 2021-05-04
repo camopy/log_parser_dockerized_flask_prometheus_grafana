@@ -2,6 +2,8 @@
 
 This is a basic log parser!
 
+![log_parser](https://user-images.githubusercontent.com/29547465/116957719-ef884f80-ac6e-11eb-84ed-ac1a6a64dd43.gif)
+
 Did this while learning the stack:
 
     - Python
