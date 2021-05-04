@@ -1,4 +1,4 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect, url_for, flash
 from parser import parse_log_file
 from main import app, db
 from models import File
@@ -29,6 +29,7 @@ def rsync_logs_parse():
         db.session.add(file)
 
     db.session.commit()
+    flash("Rsync log successfully parsed")
     return redirect(url_for("rsync"))
 
 
