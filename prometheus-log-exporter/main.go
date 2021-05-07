@@ -93,14 +93,14 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 	numLogs, err := e.fetchNumberOfLogs()
 	if err != nil {
 		ch <- prometheus.MustNewConstMetric(
-			up, prometheus.GaugeValue, 0,
+			up, prometheus.CounterValue, 0,
 		)
 		log.Error("Can't query Log Parser API: %v", err)
 		return
 	}
 
 	ch <- prometheus.MustNewConstMetric(
-		rsyncLogsReceived, prometheus.GaugeValue, float64(numLogs),
+		rsyncLogsReceived, prometheus.CounterValue, float64(numLogs),
 	)
 }
 
